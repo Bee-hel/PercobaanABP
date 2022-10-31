@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <div id="tugas_ganjilgenap">
+        <h1>Deret Nilai ganjil & genap</h1>
+        <button id="tugas_ganjilgenap" onclick="tugas_ganjilgenap()">click</button>
+        <div id="tugas_ganjilgenap_result">
+            <table border="5">
+                <tbody id="tugas_ganjilgenap_target">
+                    <tr>
+                        <th>Ganjil</th>
+                        <th>Genap</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function appending(type, val) {
+            node = document.createElement(type);
+            node.textContent = val;
+            return node;
+        }
+
+        function tugas_ganjilgenap() {
+            parser = new DOMParser();
+            target = document.getElementById("tugas_ganjilgenap_target");
+            min_val = parseInt(prompt("Masukkan angka min:"));
+            max_val = parseInt(prompt("Masukkan angka max:"));
+            ganjil = [];
+            genap = [];
+
+            for (i = min_val; i <= max_val; i++) {
+                if (i % 2 == 0) {
+                    genap.push(i);
+                }
+                else {
+                    ganjil.push(i);
+                }
+            }
+
+            min_array_len = Math.max(ganjil.length, genap.length);
+            for (i = 0; i < min_array_len; i++) {
+                if (ganjil[i]) {
+                    ganjil_ = ganjil[i]
+                }
+                else {
+                    ganjil_ = ""
+                }
+
+                if (genap[i]) {
+                    genap_ = genap[i]
+                }
+                else {
+                    genap_ = ""
+                }
+                row = document.createElement("tr");
+                row.appendChild(appending("td", ganjil_));
+                row.appendChild(appending("td", genap_));
+                target.appendChild(row);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
